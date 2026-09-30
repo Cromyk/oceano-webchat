@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Oceano Surfwear — WebChat de teste (Nalu)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  html, body { margin: 0; height: 100%; background: #e8f1f5; overflow: hidden; }
+  .header { position: fixed; top: 0; left: 0; right: 0; height: 56px; background: #0b3c5d; color: #fff; display: flex; align-items: center; padding: 0 16px; font-family: -apple-system, "Segoe UI", Arial, sans-serif; z-index: 10; }
+  .header .avatar { width: 36px; height: 36px; border-radius: 50%; background: #1ca3c4; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 12px; }
+  .header .info b { display: block; font-size: 15px; }
+  .header .info span { display: block; font-size: 12px; opacity: .85; }
+
+  /* Forca o painel do widget a ocupar a tela inteira (estilo app), abaixo do header. */
+  #omni-chat-body-div {
+    position: fixed !important;
+    top: 56px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: calc(100% - 56px) !important;
+    max-height: calc(100% - 56px) !important;
+    visibility: visible !important;
+  }
+  #omni-chat-body-frame { width: 100% !important; height: 100% !important; }
+  /* Botao flutuante nao e necessario: o chat ja abre em tela cheia. */
+  #omni-chat-btn-div { display: none !important; }
+</style>
+</head>
+<body>
+  <div class="header">
+    <div class="avatar">N</div>
+    <div class="info">
+      <b>Oceano Surfwear · Nalu</b>
+      <span>teste de homologação</span>
+    </div>
+  </div>
+  <script type="module">
+    (function(d) {
+      window.omniChatQueueId = 10;
+      window.omniChatDomain = 'oceano.evotalks.com.br';
+      var s = d.createElement('script');
+      s.async = true;
+      s.src = 'https://statics.atenderbem.com/js/wbchat.min.js';
+      s.onload = function () {
+        window.omniChat.on('configLoaded', function () {
+          if (window.crypto && window.crypto.randomUUID) {
+            window.omniChat.clientId = window.crypto.randomUUID();
+          }
+        });
+        window.omniChat.on('initialized', function () {
+          window.omniChat.show();
+        });
+      };
+      (d.head || d.body).appendChild(s);
+    })(document);
+  </script>
+</body>
+</html>
